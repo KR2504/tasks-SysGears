@@ -139,4 +139,4 @@ function yards(val) {
 //     }
 // }
 
-console.log(convertMeters(3))
+console.log(convertFrom(3))
