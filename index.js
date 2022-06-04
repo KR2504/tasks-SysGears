@@ -1,6 +1,6 @@
 const obj = {
-    "distance": { "unit": "m", "value": 0.5 },
-    "convert_to": "ft",
+    "distance": { "unit": "mm", "value": 3 },
+    "convert_to": "km",
 }
 
 let ft;
@@ -18,31 +18,158 @@ const convertTo = obj.convert_to;
 let unit;
 let value;
 
-function convertFrom(val) {
+function convertFrom() {
     unit = convertTo;
-    switch (convertTo) {
-        case "m":
-            value = valueIn * meters((val));
-            break;
-        case "ft":
-            value = valueIn * feet((val));
-            break;
-        case "mm":
-            value = valueIn * millimeters((val));
-            break;
-        case "cm":
-            value = valueIn * centimeters((val));
-            break;
-        case "in":
-            value = valueIn * inches((val));
-            break;
-        case "km":
-            value = valueIn * kilometers((val));
-            break;
-        case "yd":
-            value = valueIn * yards((val));
-            break;
+
+    if (unitIn === 'm') {
+        switch (convertTo) {
+            case "ft":
+                value = valueIn * 3.28;
+                break;
+            case "mm":
+                value = valueIn * 1000;
+                break;
+            case "cm":
+                value = valueIn * 100;
+                break;
+            case "in":
+                value = valueIn * 39.37;
+                break;
+            case "km":
+                value = valueIn * 0.001;
+                break;
+            case "yd":
+                value = valueIn * 1.09;
+                break;
+        }
+    } else if (unitIn === 'ft') {
+        switch (convertTo) {
+            case "m":
+                value = valueIn * 0.31;
+                break;
+            case "mm":
+                value = valueIn * 304.8;
+                break;
+            case "cm":
+                value = valueIn * 30.48;
+                break;
+            case "in":
+                value = valueIn * 12;
+                break;
+            case "km":
+                value = valueIn * 0.0031;
+                break;
+            case "yd":
+                value = valueIn * 0.33;
+                break;
+        }
+    } else if (unitIn === 'mm') {
+        switch (convertTo) {
+            case "m":
+                value = valueIn * 0.001;
+                break;
+            case "ft":
+                value = valueIn * 0.0033;
+                break;
+            case "cm":
+                value = valueIn * 0.1;
+                break;
+            case "in":
+                value = valueIn * 0.039;
+                break;
+            case "km":
+                value = valueIn * 0.000001;
+                break;
+            case "yd":
+                value = valueIn * 0.0011;
+                break;
+        }
+    } else if (unitIn === 'cm') {
+        switch (convertTo) {
+            case "m":
+                value = valueIn * 0.01;
+                break;
+            case "ft":
+                value = valueIn * 0.033;
+                break;
+            case "mm":
+                value = valueIn * 10;
+                break;
+            case "in":
+                value = valueIn * 0.39;
+                break;
+            case "km":
+                value = valueIn * 0.00001;
+                break;
+            case "yd":
+                value = valueIn * 0.011;
+                break;
+        }
+    } else if (unitIn === 'in') {
+        switch (convertTo) {
+            case "m":
+                value = valueIn * 0.0254;
+                break;
+            case "ft":
+                value = valueIn * 0.083;
+                break;
+            case "mm":
+                value = valueIn * 254;
+                break;
+            case "cm":
+                value = valueIn * 25.4;
+                break;
+            case "km":
+                value = valueIn * 0.0000254;
+                break;
+            case "yd":
+                value = valueIn * 0.028;
+                break;
+        }
+    } else if (unitIn === 'km') {
+        switch (convertTo) {
+            case "m":
+                value = valueIn * 1000;
+                break;
+            case "ft":
+                value = valueIn * 3280.8;
+                break;
+            case "mm":
+                value = valueIn * 1000000;
+                break;
+            case "cm":
+                value = valueIn * 100000;
+                break;
+            case "in":
+                value = valueIn * 39370;
+                break;
+            case "yd":
+                value = valueIn * 1093.6;
+                break;
+        }
+    } else if (unitIn === 'yd') {
+        switch (convertTo) {
+            case "m":
+                value = valueIn * 0.91;
+                break;
+            case "ft":
+                value = valueIn * 3;
+                break;
+            case "mm":
+                value = valueIn * 914;
+                break;
+            case "cm":
+                value = valueIn * 91.4;
+                break;
+            case "in":
+                value = valueIn * 36;
+                break;
+            case "km":
+                value = valueIn * 0.00091;
+                break;
+        }
     }
+
 
     const result = { unit, value }
     return result;
@@ -139,4 +266,4 @@ function yards(val) {
 //     }
 // }
 
-console.log(convertFrom(3))
+console.log(convertFrom())
